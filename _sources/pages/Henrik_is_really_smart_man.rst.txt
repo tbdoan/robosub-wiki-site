@@ -1,0 +1,40 @@
+Hydrophones
+-----------
+
+Noise Floor - background subtraction
+Closed form solution for the hydrophones
+2D plane that’s tilted towards the hydrophones
+Solve for an ellipsis in the actual plane
+2Mhz seems very high for our frequency range
+Kalman filter to check for static sound sources - ICA
+If you recalculate and found that there are moving sound sources, then just remove them because
+we know that the pinger is stationary, not movable
+
+Software
+-----------
+ROS Py wrappers
+Chromatiste
+more stable
+Try different color balancing techniques
+HSV, etc
+Remove blue channel LOL
+
+Hardware
+-----------
+plate springs
+
+Outreach
+-----------
+Michael Yip
+Next to Henrik’s office
+Making large robotic arm
+Mario Munch
+iRobot
+Pasadena Lab
+Underwater pool cleaners
+Water towers
+Reservoir purifiers
+Darren Anderson
+NXT/NXP(?)
+National City
+Surveillance Robotics

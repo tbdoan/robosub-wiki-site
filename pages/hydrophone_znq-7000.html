@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hydrophone task and Zynq-7000 &mdash; robosub-wiki  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Setting up a conda environment for ML/DL" href="conda_env_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> robosub-wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="edgenets.html">How to Train for Object Detection Using the EdgeNets Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conda_env_setup.html">Setting up a conda environment for ML/DL</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hydrophone task and Zynq-7000</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-zynq-7000-and-what-is-fpga-programmable-logic">What is Zynq-7000 and what is FPGA/Programmable Logic?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#then-what-is-microzed">Then what is MicroZed?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-do-we-plan-to-use-zynq-7000-for-estimation-of-the-direction-of-arrival-of-waves-from-the-pinger">How do we plan to use Zynq-7000 for estimation of the direction of arrival of waves from the pinger?</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">robosub-wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Hydrophone task and Zynq-7000</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/pages/hydrophone_znq-7000.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hydrophone-task-and-zynq-7000">
+<h1>Hydrophone task and Zynq-7000<a class="headerlink" href="#hydrophone-task-and-zynq-7000" title="Permalink to this headline">¶</a></h1>
+<p><em>Note: written from the perspective of using zynq-7000 system on a chip for the purpose of direction of arrival estimation using a hydrophone array attached to an underwater submarine for the robosub competition.</em></p>
+<div class="section" id="what-is-zynq-7000-and-what-is-fpga-programmable-logic">
+<h2>What is Zynq-7000 and what is FPGA/Programmable Logic?<a class="headerlink" href="#what-is-zynq-7000-and-what-is-fpga-programmable-logic" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://www.xilinx.com/products/silicon-devices/soc/zynq-7000.html">Zynq-7000</a> is a system on a chip (basically means it has all the components of a typical computer, ie. CPU, memory, input/output ports) which has two main components: the Processing System (PS) block and the Programmable Logic (PL) block. The processing system is analogous to a traditional computer/notebook. What’s interesting for our use case is the Programmable Logic (PL). This is basically a piece of hardware that you can program at the level of logic gates (remember the incredible power of boolean algebra). In contrast to a CPU, this incredibly low-level of programming allows for the creation of incredibly task-specific hardware logic (by combining the logic gates and memory blocks present in the Programmable Logic). Zynq-7000 has a technical reference manual <a class="reference external" href="https://www.xilinx.com/support/documentation/user_guides/ug585-Zynq-7000-TRM.pdf">here</a>.</p>
+<p>Note: FPGA is just a type of programmable logic device. There are other types of hardware devices that can be programmed as well. See <a class="reference external" href="https://en.wikipedia.org/wiki/Programmable_logic_device">wiki</a> for more info. Also look at <a class="reference external" href="https://en.wikipedia.org/wiki/Application-specific_integrated_circuit">ASIC</a> for a different family of integrated circuit chip.</p>
+<p>FPGA is widely used today (as of Jan 2020). In the industry, say while developing a <a class="reference external" href="https://www.dictation.philips.com/us/products/desktop-dictation/speechmike-premium-touch-dictation-microphone-smp37003800/">dictation microphone</a> (used by some doctors), companies also take a middle road via FPGA prototyping: developing their prototype hardware on FPGAs, but manufacture their final version as an ASIC so that it can no longer be modified after the design has been committed.</p>
+</div>
+<div class="section" id="then-what-is-microzed">
+<h2>Then what is <a class="reference external" href="http://zedboard.org/product/microzed">MicroZed</a>?<a class="headerlink" href="#then-what-is-microzed" title="Permalink to this headline">¶</a></h2>
+<p>Notice how the Raspberry Pi 4 Model B has a CPU that’s quad-core ARM Cortex-A72. In some sense the MicroZed is to the Zynq-7000 chip what the Raspberry Pi is to the ARM Cortex CPU. An development/evaluation board.</p>
+</div>
+<div class="section" id="how-do-we-plan-to-use-zynq-7000-for-estimation-of-the-direction-of-arrival-of-waves-from-the-pinger">
+<h2>How do we plan to use Zynq-7000 for estimation of the direction of arrival of waves from the pinger?<a class="headerlink" href="#how-do-we-plan-to-use-zynq-7000-for-estimation-of-the-direction-of-arrival-of-waves-from-the-pinger" title="Permalink to this headline">¶</a></h2>
+<p>Our submarine will have an array of 4 hydrophones (basically underwater microphones that convert pressure waves to electrical waves). These 4 hydrophones will be arranged in a manner that allows us to use the electrical waves generated at these hydrophones to calculate the direction of arrival of the waves emitted by the pinger.
+We’ll use a combination of ICs for</p>
+<ol class="arabic simple">
+<li><p>signal gain,</p></li>
+<li><p>band-pass filtering</p></li>
+<li><p>ADC (analog to digital conversion) (example IC <a class="reference external" href="https://www.analog.com/media/en/technical-documentation/data-sheets/21721014fb.pdf">link</a>)</p></li>
+</ol>
+<p>to first amplify the electrical signals from the hydrophones, then use a band-pass filter to remove any frequencies outside the pinger’s frequency range (robosub pingers only emit waves in the frequency range of 20khz-45khz), and then digitize the analog electrical signal by using an ADC integrated circuit chip to be passed onto the Programmable Logic block of the Zynq-7000 chip.</p>
+<img alt="../_images/microzed.png" src="../_images/microzed.png" />
+<p><em>Figure: Block diagram of signal capture and digitization.</em></p>
+<p>On the Programmable Logic (PL) block of Zynq-7000 chip we’ll use the <a class="reference external" href="https://en.wikipedia.org/wiki/MUSIC_(algorithm)">MUSIC</a> algorithm to process this data (now in digital format because of the ADC) and estimate the direction of arrival for the waves from the pinger. This crucial information has to be calculated fast and on calculation has to be conveyed to the main on-board computer (the Nvidia’s Xavier). After the estimation is complete, the direction of arrival will be sent to the Zynq-7000’s CPU memory. From there the CPU will read it and send it over to the main on-board computer using Ethernet.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="conda_env_setup.html" class="btn btn-neutral float-left" title="Setting up a conda environment for ML/DL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, tung
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

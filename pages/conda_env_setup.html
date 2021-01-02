@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Setting up a conda environment for ML/DL &mdash; robosub-wiki  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="How to Train for Object Detection Using the EdgeNets Repository" href="edgenets.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> robosub-wiki
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="edgenets.html">How to Train for Object Detection Using the EdgeNets Repository</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up a conda environment for ML/DL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">robosub-wiki</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Setting up a conda environment for ML/DL</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/pages/conda_env_setup.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setting-up-a-conda-environment-for-ml-dl">
+<h1>Setting up a conda environment for ML/DL<a class="headerlink" href="#setting-up-a-conda-environment-for-ml-dl" title="Permalink to this headline">¶</a></h1>
+<p>Setting up an environment for Machine/Deep Learning can be annoying–with different versions of CUDA, cuDNN and PyTorch. Here’s a simple, no-hassle way to do it.</p>
+<p><strong>Install Anaconda/Miniconda</strong></p>
+<p><a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda">Decide between</a> Anaconda and Miniconda and install one of them by going to their downloads page.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.anaconda.com/distribution">Anaconda</a></p></li>
+<li><p><a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a></p></li>
+</ul>
+<p><strong>Create a conda environment</strong></p>
+<p>Once that’s done, create a conda environment. Let’s call it <code class="docutils literal notranslate"><span class="pre">robosub</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.7</span> <span class="o">-</span><span class="n">n</span> <span class="n">robosub</span>
+</pre></div>
+</div>
+<p>This creates a new environment that runs Python 3.7. Activate the environment using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">robosub</span>
+</pre></div>
+</div>
+<p>You can deactivate it using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">deactivate</span>
+</pre></div>
+</div>
+<p><strong>Installing CUDA, PyTorch and other common ML packages</strong></p>
+<p>Run the following command (remember to activate your conda environment before doing this). This sets up PyTorch with a CUDA 10.1 compatible GPU.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pytorch</span> <span class="n">torchvision</span> <span class="n">cudatoolkit</span><span class="o">=</span><span class="mf">10.1</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span>
+</pre></div>
+</div>
+<p>You can find other variations of the installation (CPU only, older CUDA version, older PyTorch version etc.) on the <a class="reference external" href="https://pytorch.org/">PyTorch website</a>.</p>
+<p>Here are some commonly used packages in ML that you can optionally install. You’ll need them for working with the EdgeNets or ESPNetv2 code.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">opencv</span> <span class="n">pycocotools</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">tensorboard</span>
+</pre></div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://pytorch.org/">https://pytorch.org/</a></p></li>
+<li><p><a class="reference external" href="https://www.anaconda.com/distribution/">https://www.anaconda.com/distribution/</a></p></li>
+<li><p><a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></p></li>
+<li><p><a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html</a></p></li>
+<li><p><a class="reference external" href="https://anaconda.org/conda-forge/opencv">https://anaconda.org/conda-forge/opencv</a></p></li>
+<li><p><a class="reference external" href="https://anaconda.org/conda-forge/pycocotools">https://anaconda.org/conda-forge/pycocotools</a></p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="edgenets.html" class="btn btn-neutral float-left" title="How to Train for Object Detection Using the EdgeNets Repository" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, tung
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
